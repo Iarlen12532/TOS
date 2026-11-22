@@ -15,6 +15,10 @@ jobs:
           git clone --depth 1 https://github.com/Iarlen12532/winlator-app.git app
           git -C app log -1 --oneline
           grep -n 'name="app_name"' app/app/src/main/res/values/strings.xml
+      - name: Gerar icone do TOS
+        run: |
+          pip install pillow
+          python3 tools/make_icons.py app/app/src/main/res
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
