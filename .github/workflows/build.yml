@@ -12,7 +12,7 @@ jobs:
       - name: Trocar a pasta app pelo meu fork
         run: |
           rm -rf app
-          git clone --depth 1 https://github.com/larlen12532/winlator-app.git app
+          git clone --depth 1 https://github.com/Iarlen12532/winlator-app.git app
           git -C app log -1 --oneline
           grep -n 'name="app_name"' app/app/src/main/res/values/strings.xml
       - uses: actions/setup-java@v4
