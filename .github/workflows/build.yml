@@ -5,6 +5,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: app
     steps:
       - uses: actions/checkout@v4
         with:
@@ -13,11 +16,9 @@ jobs:
         with:
           distribution: temurin
           java-version: 17
-      - name: Listar arquivos
-        run: ls -la && ls -la app | head -40
       - run: chmod +x gradlew
       - run: ./gradlew assembleDebug --stacktrace
       - uses: actions/upload-artifact@v4
         with:
           name: TOS-apk
-          path: "**/build/outputs/apk/**/*.apk"
+          path: app/app/build/outputs/apk/**/*.apk
